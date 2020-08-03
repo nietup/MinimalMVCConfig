@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>
+        4.0.0
+    </modelVersion>
+
+    <groupId>
+        org.example
+    </groupId>
+    <artifactId>
+        mvcconfig
+    </artifactId>
+    <version>
+        1.0-SNAPSHOT
+    </version>
+    <!--you need to specify that you're building a war file-->
+    <packaging>
+        war
+    </packaging>
+    <dependencies>
+        <dependency>
+            <groupId>
+                org.springframework
+            </groupId>
+            <artifactId>
+                spring-core
+            </artifactId>
+            <version>
+                5.2.8.RELEASE
+            </version>
+        </dependency>
+        <dependency>
+            <groupId>
+                org.springframework
+            </groupId>
+            <artifactId>
+                spring-webmvc
+            </artifactId>
+            <version>
+                5.2.8.RELEASE
+            </version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--this is needed for jsp-->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <finalName>lab</finalName>
+        <!--this plugin generates a war file that has to be copied to Tomcat's webapps folder-->
+        <!--you must preface the path with the project name, so here it will be http://localhost:8080/lab/-->
+        <plugins>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <attachClasses>true</attachClasses>
+                    <webResources>
+                        <resource>
+                            <directory>src/main/webapp</directory>
+                            <filtering>true</filtering>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
